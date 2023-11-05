@@ -1,0 +1,30 @@
+.footer-section a:hover{
+    text-decoration:none;
+}
+.footer-section .section-padding {
+	padding: 60px 0;
+}
+.footer-section .bottom {
+    background-color: #0a1c2e;
+}
+.footer-section .bottom .copyright {
+    color: #e5e5e5;
+    font-weight: 600;
+}
+.footer-section .copyright a {
+    color: #f2ff49;
+    margin-left: 3px;
+    padding-right: 3px;
+}
+.footer-section .bottom p {
+    margin-bottom: 0;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.footer-section .copyright p span {
+    color: #d1caca;
+}
+.footer-section .bottom .copyright p, .bottom .copyright a:hover{
+    color: #6c6d83;
+}
