@@ -1,17 +1,16 @@
 import React,{useState} from 'react';
+//import axios from 'axios';
+import axios from 'axios'; 
 import './Contact.css';
 import mapimg from './images/map.jpg'
-
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-
-
-
 const Contact = () => {
   const [inputs, setInputs] = useState({});
+  const [errormsg, setErrormsg] = useState("");
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -21,7 +20,26 @@ const Contact = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(JSON.stringify(inputs));
+    const data = JSON.stringify(inputs);
+   // alert(JSON.stringify(inputs));
+
+   axios.post("http://localhost:8000/submitform", inputs).then((responce)=>{
+     console.log(responce.data);
+     setErrormsg(responce.data.message);
+     
+
+    }).catch((error)=>{
+
+      //console.log(error);
+      console.log(error.response.data.message);
+      setErrormsg(error.response.data.message);
+      
+    });
+
+    event.target.reset();
+   
+
+
   }
 
   return (
@@ -105,6 +123,7 @@ const Contact = () => {
             style={{ height: 100 }}
           />
           <input type="submit" name="submit" defaultValue="Submit" />
+          <p className='error-msg'>{errormsg}</p>
         </form></Col>
       </Row>
       
